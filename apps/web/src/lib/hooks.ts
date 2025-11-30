@@ -7,8 +7,20 @@ import { api, APIError } from './api-client';
 import type {
   FingerprintPayload,
   ValuationReport,
-  ComparisonStats,
 } from '@panopticlick/types';
+
+// Type not exported from @panopticlick/types - defined locally
+interface ComparisonStats {
+  uniqueness: number;
+  percentile: number;
+  similarCount: number;
+  totalScans: number;
+  componentComparisons: Record<string, {
+    uniqueness: number;
+    percentile: number;
+    commonValue: boolean;
+  }>;
+}
 
 /**
  * Hook state type
@@ -277,10 +289,10 @@ export function useHSTSDemo() {
 
   const runDemo = useCallback(async (bits = 16) => {
     const sdk = await import('@panopticlick/fingerprint-sdk');
-    const demoData = sdk.generateHSTSDemoData(bits);
-    setDemoValue(demoData.binary);
-    setVisualization(sdk.generateVisualization(demoData.binary));
-    return demoData;
+    const binaryValue = sdk.generateHSTSValue(bits);
+    setDemoValue(binaryValue);
+    setVisualization(sdk.generateVisualization(binaryValue));
+    return { binary: binaryValue };
   }, []);
 
   return { checkResult, visualization, demoValue, comparison, runDemo };

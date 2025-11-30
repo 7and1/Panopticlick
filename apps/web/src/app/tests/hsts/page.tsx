@@ -37,29 +37,24 @@ export default function HSTSTestPage() {
     const sdk = await import('@panopticlick/fingerprint-sdk');
 
     // Generate a random value and demonstrate HSTS supercookie
-    const demoData = sdk.generateHSTSDemoData(16);
-    setDemoValue(demoData.binary);
+    const binaryValue = sdk.generateHSTSValue(16);
+    setDemoValue(binaryValue);
 
     // Simulate write process
     await new Promise((r) => setTimeout(r, 500));
 
-    // Simulate read back
-    const readBack = sdk.simulateHSTSRead(demoData.binary, 16);
-
     // Update visualization
-    setVisualization(sdk.generateVisualization(demoData.binary));
+    setVisualization(sdk.generateVisualization(binaryValue));
 
     setIsAnimating(false);
     setPhase('demo');
   }, []);
 
   return (
-    <div className="min-h-screen bg-paper grid-bg">
-      <div className="confidential-bar">HSTS Supercookie Investigation</div>
-
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="bg-paper grid-bg">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         <nav className="mb-6 text-sm">
-          <Link href="/tests/" className="text-ink-300 hover:text-ink">
+          <Link href="/tests" className="text-ink-300 hover:text-ink">
             ← Back to Tests
           </Link>
         </nav>
@@ -375,7 +370,7 @@ function DemoPhase({
                   transition={{ delay: i * 0.03 }}
                 >
                   <div className="text-center">
-                    <div className="text-xs opacity-50">b{bit.position}</div>
+                    <div className="text-xs opacity-50">b{bit.index}</div>
                     <div className="font-bold">{bit.value ? '1' : '0'}</div>
                   </div>
                 </motion.div>
@@ -473,8 +468,8 @@ function ComparisonPhase({ onBack }: { onBack: () => void }) {
       persistence: string;
       survivesCookieClear: boolean;
       survivesPrivateMode: boolean;
-      userVisible: boolean;
-      difficulty: string;
+      detectable: boolean;
+      blockable: boolean;
     }>
   >([]);
 
@@ -503,7 +498,7 @@ function ComparisonPhase({ onBack }: { onBack: () => void }) {
                   <th className="text-center py-2 font-mono">Persistence</th>
                   <th className="text-center py-2 font-mono">Survives Clear</th>
                   <th className="text-center py-2 font-mono">Private Mode</th>
-                  <th className="text-center py-2 font-mono">User Visible</th>
+                  <th className="text-center py-2 font-mono">Detectable</th>
                 </tr>
               </thead>
               <tbody>
@@ -534,7 +529,7 @@ function ComparisonPhase({ onBack }: { onBack: () => void }) {
                       )}
                     </td>
                     <td className="py-3 text-center">
-                      {method.userVisible ? (
+                      {method.detectable ? (
                         <span className="text-alert-green">✓ Yes</span>
                       ) : (
                         <span className="text-alert-red">✗ No</span>
@@ -599,7 +594,7 @@ function ComparisonPhase({ onBack }: { onBack: () => void }) {
         <Button variant="outline" onClick={onBack}>
           Back to Demo
         </Button>
-        <Link href="/tests/">
+        <Link href="/tests">
           <Button variant="primary">Run More Tests</Button>
         </Link>
       </div>

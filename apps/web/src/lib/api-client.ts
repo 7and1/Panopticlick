@@ -9,9 +9,27 @@ import { useState, useCallback } from 'react';
 import type {
   FingerprintPayload,
   ValuationReport,
-  ScanSession,
-  ComparisonStats,
 } from '@panopticlick/types';
+
+// Types not exported from @panopticlick/types - defined locally
+interface ScanSession {
+  sessionId: string;
+  createdAt: string;
+  fingerprint: FingerprintPayload;
+  report: ValuationReport;
+}
+
+interface ComparisonStats {
+  uniqueness: number;
+  percentile: number;
+  similarCount: number;
+  totalScans: number;
+  componentComparisons: Record<string, {
+    uniqueness: number;
+    percentile: number;
+    commonValue: boolean;
+  }>;
+}
 
 // API Configuration
 const API_CONFIG = {
@@ -94,9 +112,9 @@ async function apiRequest<T>(
 ): Promise<T> {
   const url = `${config.baseUrl}${endpoint}`;
 
-  const headers: Record<string, string> = {
+  const headers: HeadersInit = {
     'Content-Type': 'application/json',
-    ...options.headers,
+    ...(options.headers || {}),
   };
 
   const response = await fetchWithTimeout(url, {

@@ -21,7 +21,7 @@ export default function Error({
         <DocumentHeader
           title="Investigation Error"
           subtitle="Something went wrong during the investigation"
-          classification="error"
+          classification="secret"
         />
 
         <div className="text-center py-8">

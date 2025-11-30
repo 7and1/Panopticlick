@@ -31,15 +31,13 @@ export const metadata: Metadata = {
 
 export default function MethodologyPage() {
   return (
-    <div className="min-h-screen bg-paper grid-bg">
-      <div className="confidential-bar">Technical Documentation</div>
-
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="bg-paper grid-bg">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         <Document variant="classified" watermark="METHODOLOGY">
           <DocumentHeader
             title="Methodology"
             subtitle="How we calculate browser fingerprint uniqueness"
-            classification="technical"
+            classification="unclassified"
             date={new Date()}
           />
 
@@ -325,7 +323,7 @@ export default function MethodologyPage() {
               </p>
               <div className="not-prose">
                 <Link
-                  href="https://github.com/panopticlick"
+                  href="https://github.com/7and1/Panopticlick"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-paper rounded-sm hover:bg-ink-200 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"

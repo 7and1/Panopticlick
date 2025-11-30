@@ -26,31 +26,31 @@ export function Footer() {
             </h4>
             <nav className="space-y-2 text-sm">
               <Link
-                href="/scan/"
+                href="/scan"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 Fingerprint Scan
               </Link>
               <Link
-                href="/tests/webrtc/"
+                href="/tests/webrtc"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 WebRTC Leak Test
               </Link>
               <Link
-                href="/tests/dns/"
+                href="/tests/dns"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 DNS Leak Test
               </Link>
               <Link
-                href="/tests/blocker/"
+                href="/tests/blocker"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 Ad Blocker Test
               </Link>
               <Link
-                href="/tests/hsts/"
+                href="/tests/hsts"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 HSTS Supercookie Demo
@@ -65,19 +65,19 @@ export function Footer() {
             </h4>
             <nav className="space-y-2 text-sm">
               <Link
-                href="/about/"
+                href="/about"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 About
               </Link>
               <Link
-                href="/methodology/"
+                href="/methodology"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 Methodology
               </Link>
               <Link
-                href="/privacy/"
+                href="/privacy"
                 className="block text-paper-300 hover:text-paper transition-colors"
               >
                 Privacy Policy

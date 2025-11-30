@@ -8,7 +8,7 @@ export default function NotFound() {
         <DocumentHeader
           title="Case File Not Found"
           subtitle="The investigation you're looking for doesn't exist"
-          classification="unknown"
+          classification="secret"
         />
 
         <div className="text-center py-8">
@@ -25,7 +25,7 @@ export default function NotFound() {
             <Link href="/">
               <Button variant="primary">Return to Homepage</Button>
             </Link>
-            <Link href="/scan/">
+            <Link href="/scan">
               <Button variant="outline">Start a Scan</Button>
             </Link>
           </div>

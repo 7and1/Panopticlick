@@ -23,7 +23,7 @@ const tests: TestCard[] = [
     title: 'WebRTC Leak Test',
     description:
       'Detect if WebRTC is exposing your real IP address, even when using a VPN. WebRTC can bypass proxy settings and reveal your true location.',
-    href: '/tests/webrtc/',
+    href: '/tests/webrtc',
     icon: '📡',
     status: 'active',
     severity: 'high',
@@ -32,7 +32,7 @@ const tests: TestCard[] = [
     title: 'DNS Leak Test',
     description:
       'Check if your DNS queries are being leaked outside your VPN tunnel. DNS leaks can reveal your browsing history to your ISP.',
-    href: '/tests/dns/',
+    href: '/tests/dns',
     icon: '🔍',
     status: 'active',
     severity: 'high',
@@ -41,7 +41,7 @@ const tests: TestCard[] = [
     title: 'Ad Blocker Test',
     description:
       'Measure how effectively your ad blocker prevents tracking scripts. We test against real-world trackers and ad networks.',
-    href: '/tests/blocker/',
+    href: '/tests/blocker',
     icon: '🛡️',
     status: 'active',
     severity: 'medium',
@@ -50,7 +50,7 @@ const tests: TestCard[] = [
     title: 'HSTS Supercookie Demo',
     description:
       'Learn how HSTS (HTTP Strict Transport Security) can be abused to create persistent tracking cookies that survive clearing browser data.',
-    href: '/tests/hsts/',
+    href: '/tests/hsts',
     icon: '🍪',
     status: 'active',
     severity: 'high',
@@ -59,10 +59,8 @@ const tests: TestCard[] = [
 
 export default function TestsIndexPage() {
   return (
-    <div className="min-h-screen bg-paper grid-bg">
-      <div className="confidential-bar">Privacy Test Laboratory</div>
-
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="bg-paper grid-bg">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         <Document variant="classified" watermark="INVESTIGATIONS">
           <DocumentHeader
             title="Privacy Test Suite"
@@ -88,7 +86,7 @@ export default function TestsIndexPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link href={test.href} className="block group">
+                  <Link href={test.href as '/tests/webrtc' | '/tests/dns' | '/tests/blocker' | '/tests/hsts'} className="block group">
                     <div className="document p-4 hover:shadow-lg transition-shadow">
                       <div className="flex items-start gap-4">
                         <div className="text-3xl">{test.icon}</div>

@@ -23,8 +23,8 @@ const nextConfig = {
 
   // Experimental features
   experimental: {
-    // Enable typed routes
-    typedRoutes: true,
+    // Typed routes disabled - causes issues with dynamic hrefs
+    // typedRoutes: true,
   },
 };
 

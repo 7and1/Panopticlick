@@ -22,15 +22,13 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-paper grid-bg">
-      <div className="confidential-bar">About This Investigation</div>
-
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="bg-paper grid-bg">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         <Document variant="classified" watermark="DOSSIER">
           <DocumentHeader
             title="About Panopticlick"
             subtitle="Browser fingerprinting research and privacy education"
-            classification="public"
+            classification="unclassified"
             date={new Date()}
           />
 
@@ -182,7 +180,7 @@ export default function AboutPage() {
               </p>
               <div className="not-prose flex gap-4">
                 <Link
-                  href="https://github.com/panopticlick"
+                  href="https://github.com/7and1/Panopticlick"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-ink text-paper rounded-sm hover:bg-ink-200 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -205,31 +203,6 @@ export default function AboutPage() {
           <Stamp variant="protected">Privacy First</Stamp>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-ink text-paper py-8 mt-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-              <p className="font-serif font-bold text-lg">Panopticlick</p>
-              <p className="text-paper-300 text-sm">
-                Inspired by EFF's original project
-              </p>
-            </div>
-            <div className="flex gap-6 text-paper-300 text-sm">
-              <Link href="/privacy/" className="hover:text-paper">
-                Privacy Policy
-              </Link>
-              <Link href="/methodology/" className="hover:text-paper">
-                Methodology
-              </Link>
-              <Link href="/" className="hover:text-paper">
-                Home
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

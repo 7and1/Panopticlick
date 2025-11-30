@@ -317,8 +317,8 @@ function ResultsPhase({
         defenses: report.defenses,
       },
       fingerprint: {
-        hash: fingerprint.meta.hash,
-        collectedAt: fingerprint.meta.collectedAt,
+        sessionId: fingerprint.meta.sessionId,
+        collectedAt: new Date(fingerprint.meta.timestamp).toISOString(),
         hardware: fingerprint.hardware,
         software: fingerprint.software,
         capabilities: fingerprint.capabilities,

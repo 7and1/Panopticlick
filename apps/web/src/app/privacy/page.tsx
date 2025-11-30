@@ -24,15 +24,13 @@ export default function PrivacyPage() {
   const lastUpdated = new Date('2024-12-01');
 
   return (
-    <div className="min-h-screen bg-paper grid-bg">
-      <div className="confidential-bar">Legal Documentation</div>
-
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="bg-paper grid-bg">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         <Document variant="dossier" watermark="POLICY">
           <DocumentHeader
             title="Privacy Policy"
             subtitle="How we handle your data"
-            classification="public"
+            classification="unclassified"
             date={lastUpdated}
           />
 
@@ -238,7 +236,7 @@ export default function PrivacyPage() {
               </p>
               <div className="not-prose bg-paper-100 p-4 rounded-sm font-mono text-sm">
                 <div>Email: privacy@panopticlick.org</div>
-                <div>GitHub: github.com/panopticlick</div>
+                <div>GitHub: github.com/7and1/Panopticlick</div>
               </div>
             </DocumentSection>
 

@@ -1,28 +1,10 @@
 import type { Metadata, Viewport } from 'next';
-import { Merriweather, JetBrains_Mono, Inter } from 'next/font/google';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import './globals.css';
 
-// Fonts
-const merriweather = Merriweather({
-  subsets: ['latin'],
-  weight: ['300', '400', '700', '900'],
-  variable: '--font-serif',
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
+// Use system fonts for reliability - no network dependency
+// CSS variables are set in globals.css for customization
 
 // Metadata
 export const metadata: Metadata = {
@@ -100,7 +82,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${merriweather.variable} ${jetbrainsMono.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-paper antialiased flex flex-col">
