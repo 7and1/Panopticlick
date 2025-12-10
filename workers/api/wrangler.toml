@@ -42,26 +42,21 @@ TURNSTILE_SECRET = ""
 #   OPENROUTER_API_KEY=sk-or-v1-your-key-here
 OPENROUTER_MODEL = "google/gemini-2.0-flash-exp:free"
 
-# Production overrides
-[env.production]
-name = "panopticlick-api"
-vars = { ENVIRONMENT = "production" }
-
-# Rate limiting - ENABLED for production security
-# Create rate limiter in Cloudflare Dashboard first, then update namespace_id
-[[unsafe.bindings]]
-name = "RATE_LIMITER"
-type = "ratelimit"
-namespace_id = "1001"  # Replace with actual namespace ID from dashboard
-simple = { limit = 100, period = 60 }
-
-# Additional production configurations
+# Production environment configuration
 [env.production]
 name = "panopticlick-api"
 vars = { ENVIRONMENT = "production", API_VERSION = "v1" }
 routes = [
-  { pattern = "api.panopticlick.org", custom_domain = true }
+  { pattern = "api.panopticlick.org/*", custom_domain = true }
 ]
+
+# Rate limiting - ENABLED for production security
+# Create rate limiter in Cloudflare Dashboard first, then update namespace_id
+[[env.production.unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"  # Replace with actual namespace ID from dashboard
+simple = { limit = 100, period = 60 }
 
 # Cron triggers for scheduled jobs (stats computation)
 [triggers]
